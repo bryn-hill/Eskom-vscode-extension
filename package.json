@@ -5,7 +5,7 @@
   },
   "license": "MIT",
   "name": "eskom",
-  "displayName": "Eskom",
+  "displayName": "Eskom Loadshedding Notifier",
   "description": "Uses Eskom's se push API to notify you of the next loadshedding slot",
   "version": "0.0.1",
   "engines": {
@@ -35,7 +35,7 @@
     "configuration": [
       {
         "id": "eskom",
-        "title": "Eskom se push",
+        "title": "Eskom Loadshedding Notifier",
         "order": 1,
         "properties": {
           "eskom.token": {
