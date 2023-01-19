@@ -1,71 +1,77 @@
-# eskom README
+# Eskom Extension README
 
-This is the README for your extension "eskom". After writing up a brief description, we recommend including the following sections.
+"Eskom Loadshedding Notifier: This VSCode extension uses the [EskomSePush API](https://eskomsepush.gumroad.com/l/api) to retrieve the next loadshedding schedule for your area and sends a notification 15 minutes before the scheduled slot. Never be caught off guard by power outages again!" - thanks ChatGPT
+
+You will need to subscribe to the EskomSePush (Free for 50 requests per day extension polls every 60mins) and find your area code(eg. capetown-7-greenpoint)
+
+You can use the following command replacing the area and token:
+`curl --location --request GET 'https://developer.sepush.co.za/business/2.0/areas_search?text=forways' --header 'token: xxxxxxxx-xxxxxxxx-xxxxxxxx-xxxxxxxx'`
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+![Get the next loadshedding slot](images/Animation.gif)
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- EskomSePush API key (Free)
+- EskomSePush Area code
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+- `eskom.token`: EskomSePush API key.
+- `eskom.area`: EskomSePush Area code.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
 ## Release Notes
-
-Users appreciate release notes as you update your extension.
 
 ### 1.0.0
 
-Initial release of ...
+Initial release of Eskom loadshedding notifier
+Adds a 15 minute warning
+Provides a command 'Next Loadshedding' that gives information on the end time of the current loadshedding slot or the start time of the next slot.
 
-### 1.0.1
+## Contributing
 
-Fixed issue #.
+We welcome and appreciate any contributions to the Eskom Loadshedding Notifier extension. Whether you are a beginner or an experienced developer, there is always a way for you to contribute. Here are a few ways you can help:
 
-### 1.1.0
+**Reporting Bugs:** If you encounter any bugs while using the extension, please open an issue on GitHub so that we can fix them.
 
-Added features X, Y, and Z.
+**Suggesting Features:** If you have an idea for a new feature that would improve the extension, please open an issue on GitHub to share your suggestions.
 
----
+**Fixing Bugs and Implementing Features:** If you would like to contribute by fixing bugs or implementing new features, please fork the repository, make the changes, and submit a pull request.
 
-## Following extension guidelines
+**Documentation:** If you find any inaccuracies or missing information in the documentation, please feel free to update it and submit a pull request.
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+## Development
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+Before you begin, please ensure that you have the following installed on your machine:
 
-## Working with Markdown
+- Visual Studio Code
+- Node.js
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+  To get started with development, please follow these steps:
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+1. Fork the repository
+2. Clone the repository to your machine
+3. Open the repository in Visual Studio Code
+4. Run the command npm install to install all dependencies
+5. Make your changes
+6. Test your changes by running the extension in the VS Code Extension Development Host
+7. Submit a pull request
 
-## For more information
+Please make sure to follow the VS Code extension guidelines when developing the extension. [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+Thanks for considering contributing to the Eskom Loadshedding Notifier extension. We look forward to working with you!
 
-**Enjoy!**
+You can find the repository at https://github.com/bryn-hill/Eskom-vscode-extension
+
+## Disclaimer
+
+The Eskom Loadshedding Notifier extension is a third-party tool and is not endorsed by, affiliated with, or supported by Eskom or EskomSePush. The extension uses the EskomSePush development API to provide load shedding schedule updates, but the accuracy of the information cannot be guaranteed.
+
+Eskom and EskomSePush take no responsibility for any errors or inaccuracies in the load shedding schedule provided by the extension. Users should consult the official Eskom website for the most up-to-date and accurate load shedding schedule.
+
+The developers of the Eskom Loadshedding Notifier extension are not responsible for any damages or losses that may occur as a result of using the extension. Use of the extension is at your own risk.
