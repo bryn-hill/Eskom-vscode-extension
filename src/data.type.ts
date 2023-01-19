@@ -1,9 +1,11 @@
+export type Event = {
+  start: string;
+  end: string;
+  note: string;
+};
+
 export type Response = {
-  events: {
-    end: string;
-    note: string;
-    start: string;
-  }[];
+  events: Event[];
   info: {
     name: string;
     region: string;
