@@ -1,4 +1,4 @@
-import { Search } from 'eskom-loadShedding-api';
+import { Search } from 'eskom-loadshedding-api';
 
 import * as vscode from 'vscode';
 
