@@ -1,15 +1,14 @@
 # Eskom Extension README
 
-"Eskom Loadshedding Notifier: This VSCode extension uses the [EskomSePush API](https://eskomsepush.gumroad.com/l/api) to retrieve the next loadshedding schedule for your area and sends a notification 15 minutes before the scheduled slot. Never be caught off guard by power outages again!" - thanks ChatGPT
+"Eskom loadShedding Notifier: This VSCode extension uses the [EskomSePush API](https://eskomsepush.gumroad.com/l/api) to retrieve the next loadShedding schedule for your area and sends a notification 15 minutes before the scheduled slot. Never be caught off guard by power outages again!" - thanks ChatGPT
 
-You will need to subscribe to the EskomSePush (Free for 50 requests per day extension polls every 60mins) and find your area code(eg. capetown-7-greenpoint)
-
-You can use the following command replacing the area and token:
-`curl --location --request GET 'https://developer.sepush.co.za/business/2.0/areas_search?text=forways' --header 'token: xxxxxxxx-xxxxxxxx-xxxxxxxx-xxxxxxxx'`
+You will need to subscribe to the EskomSePush (Free for 50 requests per day extension polls every 60mins and caches) and find your area code(eg. capetown-7-greenpoint)
 
 ## Features
 
-![Get the next loadshedding slot](images/Animation.gif)
+- Set load shedding warning time.
+- Search for your area in the command palette
+- ![Get the next load shedding slot](images/Animation.gif)
 
 ## Requirements
 
@@ -22,20 +21,32 @@ This extension contributes the following settings:
 
 - `eskom.token`: EskomSePush API key.
 - `eskom.area`: EskomSePush Area code.
+- `eskom.warningTimeMins`: Sets the number of minutes to warn before loadShedding
+- `eskom.provider`: WIP sets the Provider (EskomSePush, Eskom, Satrix)
 
 ## Known Issues
 
+Providers are still a WIP although Eskom is implemented it has not been tested fully and is still in development
+Satrix has not been implemented yet (Awaiting api key)
+
+Apis don't have clear documentation on no loadShedding responses so if the "No loadShedding" messaging may be a bit flaky
+
 ## Release Notes
+
+### 1.1.0
+
+Adds Eskom as a data provider
+Adds Caching on eskomSePush provider to preserve api limits
 
 ### 1.0.0
 
-Initial release of Eskom loadshedding notifier
+Initial release of Eskom loadShedding notifier
 Adds a 15 minute warning
-Provides a command 'Next Loadshedding' that gives information on the end time of the current loadshedding slot or the start time of the next slot.
+Provides a command 'Next loadShedding' that gives information on the end time of the current loadShedding slot or the start time of the next slot.
 
 ## Contributing
 
-We welcome and appreciate any contributions to the Eskom Loadshedding Notifier extension. Whether you are a beginner or an experienced developer, there is always a way for you to contribute. Here are a few ways you can help:
+We welcome and appreciate any contributions to the Eskom loadShedding Notifier extension. Whether you are a beginner or an experienced developer, there is always a way for you to contribute. Here are a few ways you can help:
 
 **Reporting Bugs:** If you encounter any bugs while using the extension, please open an issue on GitHub so that we can fix them.
 
@@ -47,12 +58,12 @@ We welcome and appreciate any contributions to the Eskom Loadshedding Notifier e
 
 ## Development
 
-Before you begin, please ensure that you have the following installed on your machine:
+### Before you begin, please ensure that you have the following installed on your machine:
 
 - Visual Studio Code
 - Node.js
 
-  To get started with development, please follow these steps:
+### To get started with development, please follow these steps:
 
 1. Fork the repository
 2. Clone the repository to your machine
@@ -64,14 +75,19 @@ Before you begin, please ensure that you have the following installed on your ma
 
 Please make sure to follow the VS Code extension guidelines when developing the extension. [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
 
-Thanks for considering contributing to the Eskom Loadshedding Notifier extension. We look forward to working with you!
+Thanks for considering contributing to the Eskom loadShedding Notifier extension. We look forward to working with you!
 
 You can find the repository at https://github.com/bryn-hill/Eskom-vscode-extension
 
 ## Disclaimer
 
-The Eskom Loadshedding Notifier extension is a third-party tool and is not endorsed by, affiliated with, or supported by Eskom or EskomSePush. The extension uses the EskomSePush development API to provide load shedding schedule updates, but the accuracy of the information cannot be guaranteed.
+The Eskom loadShedding Notifier extension is a third-party tool and is not endorsed by, affiliated with, or supported by Eskom or EskomSePush. The extension uses the EskomSePush development API to provide load shedding schedule updates, but the accuracy of the information cannot be guaranteed.
 
 Eskom and EskomSePush take no responsibility for any errors or inaccuracies in the load shedding schedule provided by the extension. Users should consult the official Eskom website for the most up-to-date and accurate load shedding schedule.
 
-The developers of the Eskom Loadshedding Notifier extension are not responsible for any damages or losses that may occur as a result of using the extension. Use of the extension is at your own risk.
+The developers of the Eskom loadShedding Notifier extension are not responsible for any damages or losses that may occur as a result of using the extension. Use of the extension is at your own risk.
+
+## Credits
+
+- Data provided by [EskomSePush](https://sepush.co.za/), [Eskom](https://loadShedding.eskom.co.za/)
+- Status information from [EWN](https://ewn.co.za/assets/loadShedding/api/status)

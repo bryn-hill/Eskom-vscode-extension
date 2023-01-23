@@ -5,8 +5,8 @@
   },
   "license": "MIT",
   "name": "eskom",
-  "displayName": "Eskom Loadshedding Notifier",
-  "description": "Uses Eskom's se push API to notify you of the next loadshedding slot",
+  "displayName": "VSLoad Shedding Notifier",
+  "description": "Uses Eskom's se push API to notify you of the next load shedding slot",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.74.0"
@@ -20,8 +20,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "eskom.loadsheddingAlert",
-        "title": "Eskom: Next loadshedding slot"
+        "command": "eskom.loadSheddingAlert",
+        "title": "Eskom: Next loadShedding slot"
       },
       {
         "command": "eskom.updateToken",
@@ -30,12 +30,16 @@
       {
         "command": "eskom.updateArea",
         "title": "Eskom: Update Area"
+      },
+      {
+        "command": "eskom.invalidateCache",
+        "title": "Eskom: clear cache"
       }
     ],
     "configuration": [
       {
         "id": "eskom",
-        "title": "Eskom Loadshedding Notifier",
+        "title": "Eskom load shedding notifier",
         "order": 1,
         "properties": {
           "eskom.token": {
@@ -45,6 +49,20 @@
           "eskom.area": {
             "type": "string",
             "title": "Eskom se push area id"
+          },
+          "eskom.warningTimeMins": {
+            "type": "number",
+            "title": "Number of minutes before loadShedding",
+            "default": 15
+          },
+          "eskom.provider": {
+            "title": "loadShedding provider",
+            "enum": [
+              "Eskom",
+              "EskomSePush",
+              "Sintrex"
+            ],
+            "default": "EskomSePush"
           }
         }
       }
@@ -66,13 +84,18 @@
     "@types/glob": "^8.0.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
+    "@types/sinon": "^10.0.13",
     "@types/vscode": "^1.74.0",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "@vscode/test-electron": "^2.2.0",
     "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.6.0",
     "glob": "^8.0.3",
     "mocha": "^10.1.0",
+    "nock": "^13.3.0",
+    "prettier": "^2.8.3",
+    "sinon": "^15.0.1",
     "ts-loader": "^9.4.1",
     "typescript": "^4.9.3",
     "webpack": "^5.75.0",
@@ -80,6 +103,7 @@
   },
   "dependencies": {
     "axios": "^1.2.3",
-    "tiny-invariant": "^1.3.1"
+    "date-fns": "^2.29.3",
+    "eskom-loadShedding-api": "^0.1.5"
   }
 }
