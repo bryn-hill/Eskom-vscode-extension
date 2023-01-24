@@ -1,3 +1,7 @@
+# Early Access
+
+The VSLoad shedding notifier extension for Visual Studio Code is currently in early access. This means that the extension is still under development and may contain bugs or unfinished features. While we strive to make the extension as stable and functional as possible, we ask for your understanding and patience as we continue to improve the extension. Your feedback and suggestions are greatly appreciated and will help us shape the extension into a valuable tool for all users. Thank you for trying VSLoad shedding notifier!
+
 # Eskom Extension README
 
 "Eskom loadShedding Notifier: This VSCode extension uses the [EskomSePush API](https://eskomsepush.gumroad.com/l/api) to retrieve the next loadShedding schedule for your area and sends a notification 15 minutes before the scheduled slot. Never be caught off guard by power outages again!" - thanks ChatGPT
