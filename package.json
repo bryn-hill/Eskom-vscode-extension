@@ -7,7 +7,7 @@
   "license": "MIT",
   "name": "eskom",
   "displayName": "VSLoad Shedding Notifier",
-  "description": "Uses Eskom's se push API to notify you of the next load shedding slot",
+  "description": "Uses the Eskom-Se-Push API to notify you of the next load shedding slot",
   "version": "0.10.0",
   "icon": "images/VSLoad.png",
   "repository": {
