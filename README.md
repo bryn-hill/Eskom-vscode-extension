@@ -8,6 +8,12 @@ The VSLoad shedding notifier extension for Visual Studio Code is currently in ea
 
 You will need to subscribe to the EskomSePush (Free for 50 requests per day extension polls every 60mins and caches) and find your area code(eg. capetown-7-greenpoint)
 
+## Usage
+
+To update the area to receive alerts from, open the `Command pallet` (`shift` + `ctrl` + `p` by default) and select `Eskom: Update area`.
+
+To find out when the next load shedding slot ends or begins, open the `Command pallet` and select `Eskom: Next load shedding slot`.
+
 ## Features
 
 - Set load shedding warning time.

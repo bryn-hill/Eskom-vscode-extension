@@ -26,7 +26,7 @@
     "commands": [
       {
         "command": "eskom.loadSheddingAlert",
-        "title": "Eskom: Next loadShedding slot"
+        "title": "Eskom: Next load shedding slot"
       },
       {
         "command": "eskom.updateToken",
@@ -34,11 +34,11 @@
       },
       {
         "command": "eskom.updateArea",
-        "title": "Eskom: Update Area"
+        "title": "Eskom: Update area"
       },
       {
         "command": "eskom.invalidateCache",
-        "title": "Eskom: clear cache"
+        "title": "Eskom: Clear cache"
       }
     ],
     "configuration": [
