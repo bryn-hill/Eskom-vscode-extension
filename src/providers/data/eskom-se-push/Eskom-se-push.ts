@@ -1,4 +1,4 @@
-import { differenceInHours, parseISO } from 'date-fns';
+import { differenceInHours, differenceInSeconds, parseISO } from 'date-fns';
 import * as vscode from 'vscode';
 import { ApiResponse, CachedResponse } from '../../../data.type';
 import { Cache, SETTINGS } from '../../../settings.enum';
@@ -11,6 +11,7 @@ export const updateToken = async () => {
   const token = await vscode.window.showInputBox({
     placeHolder: 'Enter your token',
   });
+
   if (!token) {
     showError('API Token cannot be empty', updateToken);
     return;
@@ -31,6 +32,7 @@ export class EskomSePushProvider extends AbstractProviderClass {
       'eskom.updateToken',
       this.updateToken
     );
+
     const invalidateCacheCommand = vscode.commands.registerCommand(
       'eskom.invalidateCache',
       this.invalidateCache
@@ -45,6 +47,7 @@ export class EskomSePushProvider extends AbstractProviderClass {
   private invalidateCache() {
     this.context?.globalState.update(Cache.schedule, undefined);
   }
+
   async areaSearch(): Promise<string | undefined> {
     const config = vscode.workspace.getConfiguration();
     const token = config.get(SETTINGS.tokenKey) as string | undefined;
@@ -69,7 +72,7 @@ export class EskomSePushProvider extends AbstractProviderClass {
       differenceInHours(
         parseISO(new Date(cachedData.timestamp).toISOString()),
         new Date()
-      ) > 1
+      ) !== 0
     ) {
       const data = await callEskomSePushAPI(token, area);
       if (!data) {
