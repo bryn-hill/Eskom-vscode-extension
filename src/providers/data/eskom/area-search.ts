@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 
 export const areaSearch = async () => {
   const area = await vscode.window.showInputBox({
-    placeHolder: 'Enter Area Eg. Green Point',
+    placeHolder: 'Enter Area Eg. Green Point'
   });
   if (!area) {
     return;
@@ -33,7 +33,7 @@ export const areaSearch = async () => {
       })
       .map((item) => ({
         label: `${item.province} - ${item.suburb}`,
-        details: JSON.stringify(item),
+        details: JSON.stringify(item)
       }))
   );
   return selectedItem?.details;

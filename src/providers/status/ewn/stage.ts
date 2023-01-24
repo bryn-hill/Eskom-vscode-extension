@@ -1,5 +1,8 @@
 import axios from 'axios';
 import * as vscode from 'vscode';
+
+//WIP - Unused for now, but will be used to get the stage and invalidate the cache if the stage changes
+
 export const getStage = async () => {
   const eskomRegex = /ESKOM STAGE (\d+) UNTIL (\d{2}:\d{2})/;
   const cityRegex = /CITY CUSTOMERS ON STAGE (\d+) UNTIL (\d{2}:\d{2})/;
@@ -15,7 +18,6 @@ export const getStage = async () => {
     const matchCity = data.match(cityRegex);
     const eskomStage = matchEskom ? matchEskom[1] : 'Not Found';
     const cityStage = matchCity ? matchCity[1] : 'Not Found';
-    const info = data.split(',')?.[1].trim();
 
     return { eskomStage, cityStage };
   } catch (error) {

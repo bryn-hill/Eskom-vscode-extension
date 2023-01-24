@@ -5,7 +5,7 @@ import { SETTINGS } from './settings.enum';
 enum DataSource {
   Eskom = 'Eskom',
   EskomSePush = 'EskomSePush',
-  Sintrex = 'Sintrex',
+  Sintrex = 'Sintrex'
 }
 
 export function loadProvider(context: vscode.ExtensionContext) {

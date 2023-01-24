@@ -5,11 +5,11 @@ import { AreaResponse } from './response.type';
 export const areaSearch = async (token: string) => {
   const apiConfig = {
     headers: {
-      token,
-    },
+      token
+    }
   };
   const area = await vscode.window.showInputBox({
-    placeHolder: 'Enter Area Eg. Green Point',
+    placeHolder: 'Enter Area Eg. Green Point'
   });
   if (!area) {
     return;
@@ -44,7 +44,7 @@ export const areaSearch = async (token: string) => {
         })
         .map((item) => ({
           label: `${item.region} - ${item.name}`,
-          details: item.id,
+          details: item.id
         }))
     );
     return selectedItem?.details;

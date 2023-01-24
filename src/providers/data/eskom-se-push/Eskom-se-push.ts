@@ -1,4 +1,4 @@
-import { differenceInHours, differenceInSeconds, parseISO } from 'date-fns';
+import { differenceInHours, parseISO } from 'date-fns';
 import * as vscode from 'vscode';
 import { ApiResponse, CachedResponse } from '../../../data.type';
 import { Cache, SETTINGS } from '../../../settings.enum';
@@ -7,26 +7,9 @@ import { showError } from '../utils';
 import { areaSearch } from './area-search';
 import { callEskomSePushAPI } from './call-api';
 
-export const updateToken = async () => {
-  const token = await vscode.window.showInputBox({
-    placeHolder: 'Enter your token',
-  });
-
-  if (!token) {
-    showError('API Token cannot be empty', updateToken);
-    return;
-  }
-
-  await vscode.workspace
-    .getConfiguration()
-    .update(SETTINGS.tokenKey, token, vscode.ConfigurationTarget.Global);
-};
-
 export class EskomSePushProvider extends AbstractProviderClass {
   constructor(context: vscode.ExtensionContext) {
     super(context);
-    this.cacheResponseCall = this.cacheResponseCall.bind(this);
-    this.invalidateCache = this.invalidateCache.bind(this);
 
     const updateTokenCommand = vscode.commands.registerCommand(
       'eskom.updateToken',
@@ -48,20 +31,7 @@ export class EskomSePushProvider extends AbstractProviderClass {
     this.context?.globalState.update(Cache.schedule, undefined);
   }
 
-  async areaSearch(): Promise<string | undefined> {
-    const config = vscode.workspace.getConfiguration();
-    const token = config.get(SETTINGS.tokenKey) as string | undefined;
-    if (!token) {
-      await updateToken();
-    }
-    if (!token) {
-      return;
-    }
-
-    return areaSearch(token);
-  }
-
-  private async cacheResponseCall(token: string, area: string) {
+  private cacheResponseCall = async (token: string, area: string) => {
     let cachedData = this.context?.globalState.get<CachedResponse>(
       Cache.schedule
     );
@@ -81,15 +51,28 @@ export class EskomSePushProvider extends AbstractProviderClass {
       cachedData = {
         apiResponse: data,
         timestamp: new Date(),
-        area,
+        area
       };
       this.context?.globalState.update(Cache.schedule, cachedData);
       return data;
     }
     return cachedData.apiResponse;
-  }
+  };
 
-  async callAPI(): Promise<ApiResponse | undefined> {
+  areaSearch = async (): Promise<string | undefined> => {
+    const config = vscode.workspace.getConfiguration();
+    const token = config.get(SETTINGS.tokenKey) as string | undefined;
+    if (!token) {
+      await this.updateToken();
+    }
+    if (!token) {
+      return;
+    }
+
+    return areaSearch(token);
+  };
+
+  callAPI = async (): Promise<ApiResponse | undefined> => {
     const config = vscode.workspace.getConfiguration();
     let token = config.get(SETTINGS.tokenKey) as string | undefined;
     let area = config.get(SETTINGS.areaKey) as string | undefined;
@@ -105,9 +88,20 @@ export class EskomSePushProvider extends AbstractProviderClass {
     }
 
     return this.cacheResponseCall(token, area);
-  }
+  };
 
-  updateToken(): Promise<void> {
-    return updateToken();
-  }
+  updateToken = async () => {
+    const token = await vscode.window.showInputBox({
+      placeHolder: 'Enter your token'
+    });
+
+    if (!token) {
+      showError('API Token cannot be empty', this.updateToken);
+      return;
+    }
+
+    await vscode.workspace
+      .getConfiguration()
+      .update(SETTINGS.tokenKey, token, vscode.ConfigurationTarget.Global);
+  };
 }

@@ -8,8 +8,8 @@ export const callEskomSePushAPI = async (
 ): Promise<ApiResponse | undefined> => {
   const apiConfig = {
     headers: {
-      token,
-    },
+      token
+    }
   };
 
   try {
@@ -22,7 +22,7 @@ export const callEskomSePushAPI = async (
       slots: responseData.events.map(
         (item) =>
           ({ end: item.end, stage: item.note, start: item.start } as Slot)
-      ),
+      )
     } as ApiResponse;
 
     return data;

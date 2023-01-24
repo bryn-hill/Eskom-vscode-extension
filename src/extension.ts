@@ -31,7 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
     {
       dispose: () => {
         clearInterval(intervalId);
-      },
+      }
     }
   );
 }

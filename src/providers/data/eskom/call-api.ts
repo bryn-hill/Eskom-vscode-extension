@@ -31,12 +31,12 @@ export const callEskomAPI = async (): Promise<ApiResponse | undefined> => {
         ({
           start: item.startTime.toString(),
           end: item.endTime.toString(),
-          stage: '4',
+          stage: stage.toString()
         } as Slot)
     );
 
     return {
-      slots,
+      slots
     } as ApiResponse;
   }
   return undefined;
