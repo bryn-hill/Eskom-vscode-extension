@@ -3,11 +3,13 @@
     "name": "Bryn Hill",
     "email": "Bryn.hill@outlook.com"
   },
+  "publisher": "bryn-hill",
   "license": "MIT",
   "name": "eskom",
   "displayName": "VSLoad Shedding Notifier",
   "description": "Uses Eskom's se push API to notify you of the next load shedding slot",
-  "version": "0.9.1",
+  "version": "0.9.2",
+  "icon": "images/VSLoad.png",
   "repository": {
     "url": "https://github.com/bryn-hill/Eskom-vscode-extension"
   },
