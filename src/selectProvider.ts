@@ -23,8 +23,7 @@ export function loadProvider(context: vscode.ExtensionContext) {
     case DataSource.Sintrex:
       // call function to get data from Sintrex
       throw new Error('Not yet implemented');
-      break;
     default:
-      console.error('Invalid data source');
+      vscode.window.showErrorMessage('Invalid provider');
   }
 }

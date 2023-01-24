@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ApiResponse, Slot } from '../../../data.type';
 import { StageResponse } from './response.type';
-
+import * as vscode from 'vscode';
 export const callEskomSePushAPI = async (
   token: string,
   area: string
@@ -27,6 +27,6 @@ export const callEskomSePushAPI = async (
 
     return data;
   } catch (error) {
-    console.error(error);
+    vscode.window.showErrorMessage('Something went wrong calling the API.');
   }
 };
