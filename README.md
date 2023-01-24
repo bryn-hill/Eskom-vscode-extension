@@ -17,14 +17,13 @@ You will need to subscribe to the EskomSePush (Free for 50 requests per day exte
 ## Requirements
 
 - EskomSePush API key (Free)
-- EskomSePush Area code
 
 ## Extension Settings
 
 This extension contributes the following settings:
 
 - `eskom.token`: EskomSePush API key.
-- `eskom.area`: EskomSePush Area code.
+- `eskom.area`: EskomSePush Area id.
 - `eskom.warningTimeMins`: Sets the number of minutes to warn before loadShedding
 - `eskom.provider`: WIP sets the Provider (EskomSePush, Eskom, Satrix)
 
