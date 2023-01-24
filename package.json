@@ -8,7 +8,7 @@
   "name": "eskom",
   "displayName": "VSLoad Shedding Notifier",
   "description": "Uses the Eskom-Se-Push API to notify you of the next load shedding slot",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "icon": "images/VSLoad.png",
   "repository": {
     "url": "https://github.com/bryn-hill/Eskom-vscode-extension"
