@@ -19,7 +19,7 @@ import * as vscode from 'vscode';
 import { ApiResponse, Slot } from '../../data.type';
 import { SETTINGS } from '../../settings.enum';
 import { showError } from './utils';
-import { format } from 'date-fns';
+import { addMinutes, format } from 'date-fns';
 export abstract class AbstractProviderClass {
   protected context: vscode.ExtensionContext;
 
@@ -77,13 +77,13 @@ export abstract class AbstractProviderClass {
   };
 
   scheduleLoadSheddingAlert = (shedding: Slot) => {
-    let start = new Date(shedding.start);
-    let end = new Date(shedding.end);
-    let currentTime = new Date();
-    let alertTime = new Date(start);
     const config = vscode.workspace.getConfiguration();
-    let warningTime = (config.get(SETTINGS.warningTime) as number) ?? 15;
-    alertTime.setMinutes(alertTime.getMinutes() - warningTime);
+    const warningTime = config.get(SETTINGS.warningTime) as number;
+
+    const end = new Date(shedding.end);
+    const start = new Date(shedding.start);
+    const currentTime = new Date();
+    const alertTime = addMinutes(start, -warningTime);
 
     if (alertTime > currentTime) {
       const duration = alertTime.getTime() - currentTime.getTime();

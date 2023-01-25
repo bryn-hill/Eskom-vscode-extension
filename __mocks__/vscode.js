@@ -12,6 +12,7 @@ const window = {
   })),
   showErrorMessage: jest.fn(),
   showWarningMessage: jest.fn(),
+  showInformationMessage: jest.fn(),
   createTextEditorDecorationType: jest.fn(),
   showInputBox: jest.fn(),
   showQuickPick: jest.fn(),
