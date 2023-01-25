@@ -3,9 +3,9 @@ import { EskomSePushProvider } from './providers/data/eskom-se-push/Eskom-se-pus
 import { EskomProvider } from './providers/data/eskom/eskom';
 import { SETTINGS } from './settings.enum';
 enum DataSource {
-  Eskom = 'Eskom',
-  EskomSePush = 'EskomSePush',
-  Sintrex = 'Sintrex'
+  eskom = 'Eskom',
+  eskomSePush = 'EskomSePush',
+  sintrex = 'Sintrex'
 }
 
 export function loadProvider(context: vscode.ExtensionContext) {
@@ -13,14 +13,14 @@ export function loadProvider(context: vscode.ExtensionContext) {
 
   const provider = config.get(SETTINGS.provider) as DataSource | undefined;
   switch (provider) {
-    case DataSource.Eskom:
+    case DataSource.eskom:
       // call function to get data from Eskom
       return new EskomProvider(context);
 
-    case DataSource.EskomSePush:
+    case DataSource.eskomSePush:
       return new EskomSePushProvider(context);
 
-    case DataSource.Sintrex:
+    case DataSource.sintrex:
       // call function to get data from Sintrex
       throw new Error('Not yet implemented');
     default:

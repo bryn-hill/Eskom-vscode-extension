@@ -1,5 +1,5 @@
 import { isBefore, isToday } from 'date-fns';
-import { Schedule, SearchSuburb, Status } from 'eskom-loadShedding-api';
+import { Schedule, SearchSuburb, Status } from 'eskom-loadshedding-api';
 import * as vscode from 'vscode';
 import { ApiResponse, Slot } from '../../../data.type';
 import { SETTINGS } from '../../../settings.enum';

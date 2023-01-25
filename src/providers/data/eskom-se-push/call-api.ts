@@ -17,6 +17,7 @@ export const callEskomSePushAPI = async (
       `https://developer.sepush.co.za/business/2.0/area?id=${area}`,
       apiConfig
     );
+
     const responseData = response.data as StageResponse;
     const data = {
       slots: responseData.events.map(

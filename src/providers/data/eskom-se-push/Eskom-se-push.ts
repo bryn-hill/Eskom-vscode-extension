@@ -27,11 +27,11 @@ export class EskomSePushProvider extends AbstractProviderClass {
     );
   }
 
-  private invalidateCache = () => {
+  invalidateCache = () => {
     this.context?.globalState.update(Cache.schedule, undefined);
   };
 
-  private cacheResponseCall = async (token: string, area: string) => {
+  cacheResponseCall = async (token: string, area: string) => {
     let cachedData = this.context?.globalState.get<CachedResponse>(
       Cache.schedule
     );

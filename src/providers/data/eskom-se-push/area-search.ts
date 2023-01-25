@@ -21,9 +21,7 @@ export const areaSearch = async (token: string) => {
     const response = await axios.get(api, apiConfig);
     const data = response.data as AreaResponse;
     if (!data) {
-      return vscode.window.showErrorMessage(
-        'Could not connect to EskomSePush API'
-      );
+      throw new Error('No data returned from EskomSePush API');
     }
     const selectedItem = await vscode.window.showQuickPick(
       data.areas
@@ -49,6 +47,6 @@ export const areaSearch = async (token: string) => {
     );
     return selectedItem?.details;
   } catch (error) {
-    console.error(error);
+    vscode.window.showErrorMessage('Could not connect to EskomSePush API');
   }
 };
